@@ -1,0 +1,167 @@
+
+### ========================================================
+### KONFIGURASI BASE URL
+### ========================================================
+
+@baseUrl = http://localhost:3000/api
+
+### Ganti sesuai port backend kamu.
+### Jika menggunakan port lain, ubah localhost:3000.
+
+
+### ========================================================
+### 1. AREA PARKIR
+### Base Route: /api/area-parkir
+### ========================================================
+
+
+### 1.1 GET - Mengambil semua area parkir
+GET {{baseUrl}}/area-parkir
+Accept: application/json
+
+
+### 1.2 GET - Mengambil area parkir berdasarkan ID
+GET {{baseUrl}}/area-parkir/1
+Accept: application/json
+
+
+### 1.3 POST - Membuat area parkir baru
+POST {{baseUrl}}/area-parkir
+Content-Type: application/json
+
+{
+  "nama_area": "Area Parkir A",
+  "kapasitas": 20,
+  "lokasi": "Lantai 1"
+}
+
+
+### 1.4 PUT - Mengubah data area parkir
+PUT {{baseUrl}}/area-parkir/1
+Content-Type: application/json
+
+{
+  "nama_area": "Area Parkir A Updated",
+  "kapasitas": 25,
+  "lokasi": "Lantai 2"
+}
+
+
+### 1.5 DELETE - Menghapus area parkir
+DELETE {{baseUrl}}/area-parkir/1
+Accept: application/json
+
+
+
+### ========================================================
+### 2. KENDARAAN
+### Base Route: /api/kendaraan
+### ========================================================
+
+
+### 2.1 GET - Mengambil semua kendaraan
+GET {{baseUrl}}/kendaraan
+Accept: application/json
+
+
+### 2.2 GET - Mengambil kendaraan berdasarkan ID
+GET {{baseUrl}}/kendaraan/1
+Accept: application/json
+
+
+### 2.3 POST - Mendaftarkan kendaraan baru
+POST {{baseUrl}}/kendaraan
+Content-Type: application/json
+
+{
+  "nomor_plat": "B 1234 ABC",
+  "jenis_kendaraan": "Mobil"
+}
+
+
+### 2.4 PUT - Mengubah data kendaraan
+PUT {{baseUrl}}/kendaraan/1
+Content-Type: application/json
+
+{
+  "nomor_plat": "B 5678 XYZ",
+  "jenis_kendaraan": "Mobil"
+}
+
+
+### 2.5 DELETE - Menghapus kendaraan
+DELETE {{baseUrl}}/kendaraan/1
+Accept: application/json
+
+
+
+### ========================================================
+### 3. TRANSAKSI PARKIR
+### Base Route: /api/transaksi-parkir
+### ========================================================
+
+
+### 3.1 GET - Mengambil semua transaksi parkir
+GET {{baseUrl}}/transaksi-parkir
+Accept: application/json
+
+
+### 3.2 GET - Mengambil detail transaksi berdasarkan ID
+GET {{baseUrl}}/transaksi-parkir/1
+Accept: application/json
+
+
+### 3.3 GET - Mengambil riwayat transaksi kendaraan
+GET {{baseUrl}}/transaksi-parkir/kendaraan/1
+Accept: application/json
+
+
+### 3.4 GET - Mengambil semua kendaraan yang sedang parkir
+GET {{baseUrl}}/transaksi-parkir/aktif
+Accept: application/json
+
+
+### 3.5 GET - Mengecek transaksi aktif berdasarkan kendaraan
+GET {{baseUrl}}/transaksi-parkir/aktif/kendaraan/1
+Accept: application/json
+
+
+### 3.6 GET - Mengambil kendaraan yang parkir di area tertentu
+GET {{baseUrl}}/transaksi-parkir/area/2/aktif
+Accept: application/json
+
+
+### 3.7 GET - Menghitung jumlah kendaraan aktif dalam area
+GET {{baseUrl}}/transaksi-parkir/area/1/count
+Accept: application/json
+
+
+### 3.8 POST - Kendaraan masuk / membuat transaksi parkir
+POST {{baseUrl}}/transaksi-parkir
+Content-Type: application/json
+
+{
+  "id_kendaraan": 1,
+  "id_area": 1,
+  "biaya_parkir": 0
+}
+
+
+### 3.9 PUT - Kendaraan keluar / menyelesaikan transaksi
+PUT {{baseUrl}}/transaksi-parkir/1/keluar
+Content-Type: application/json
+
+{
+  "biaya_parkir": 5000
+}
+
+
+### 3.10 GET - Mengambil seluruh riwayat transaksi yang selesai
+GET {{baseUrl}}/transaksi-parkir/riwayat
+Accept: application/json
+
+
+
+### ========================================================
+### SELESAI - DOKUMENTASI API PARKIR
+### ========================================================
