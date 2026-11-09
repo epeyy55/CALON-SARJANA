@@ -63,6 +63,10 @@ export default function App() {
         axios.get(`${API_BASE}/transaksi-parkir`),
       ])
 
+      console.log('Areas:', areaRes.data)
+      console.log('Vehicles:', vehicleRes.data)
+      console.log('Transactions:', trxRes.data)
+
       const newAreas: Area[] = (areaRes.data.data || []).map((item: any) => ({
         id: Number(item.id_area),
         name: item.nama_area,
